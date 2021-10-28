@@ -19,7 +19,7 @@ To get started developing right away:
 ├── README.md - This file.
 ├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
 └── src
-|    └──client #frontend project
-|    └── sever  #backend project
+    └──client #frontend project
+    └── sever  #backend project
 └── __test__  #project tests
 ```
