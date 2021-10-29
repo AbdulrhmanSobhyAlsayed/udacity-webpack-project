@@ -10,7 +10,7 @@ function checkForName(inputText) {
 }
 
 function isEnglish(input) {
-  let reg = new RegExp(/^[a-zA-Z0-9]+$/);
+  let reg = new RegExp(/^[a-zA-Z0-9 ]+$/);
   return reg.test(input);
 }
 
