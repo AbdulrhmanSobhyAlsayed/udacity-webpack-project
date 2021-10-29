@@ -1,14 +1,17 @@
 function checkForName(inputText) {
   console.log("::: Running checkForName :::", inputText);
 
-  if (isInputNumber(inputText)) {
-    alert("No number Please Enter String!!");
+  if (!inputText) {
+    alert("please enter value!!");
+  }
+  if (!isEnglish(inputText)) {
+    alert("the text must be english !!");
   }
 }
 
-function isInputNumber(input) {
-  let reg = new RegExp(/^\d+$/);
+function isEnglish(input) {
+  let reg = new RegExp(/^[a-zA-Z0-9]+$/);
   return reg.test(input);
 }
 
-export { checkForName, isInputNumber };
+export { checkForName, isEnglish };

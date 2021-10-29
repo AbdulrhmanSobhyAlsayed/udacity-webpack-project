@@ -28,14 +28,17 @@ app.get("/", function (req, res) {
 app.post("/test", function (req, res) {
   var data = new FormData();
   data.append("key", process.env.API_KEY);
-  data.append("text", req.body.text);
+  data.append("lang", "en");
+  data.append("txt", req.body.text);
   data.submit(
-    "https://api.meaningcloud.com/lang-4.0/identification",
+    "https://api.meaningcloud.com/sentiment-2.1",
     function (err, resp) {
       resp.on("data", (chunk) => {
-        return res
-          .status(200)
-          .json({ text: JSON.parse(chunk).language_list[0]["name"] });
+        return res.status(200).json({
+          text: `confidence: ${
+            JSON.parse(chunk).sentence_list[0].confidence
+          } - score tag: ${JSON.parse(chunk).sentence_list[0].score_tag}`,
+        });
       });
     }
   );

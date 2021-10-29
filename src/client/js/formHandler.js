@@ -9,14 +9,14 @@ function handleSubmit(event) {
   Client.checkForName(formText);
 
   console.log("::: Form Submitted :::");
-  getLang(formText).then(function (data) {
+  getAnalysis(formText).then(function (data) {
     document.getElementById("results").innerHTML = data.text;
     document.getElementById("name").value = "";
     return;
   });
 }
 
-function getLang(formText) {
+function getAnalysis(formText) {
   return new Promise((resolve, reject) => {
     fetch("http://localhost:8081/test", {
       method: "POST",
@@ -32,4 +32,4 @@ function getLang(formText) {
   });
 }
 
-export { handleSubmit, getLang };
+export { handleSubmit, getAnalysis };
