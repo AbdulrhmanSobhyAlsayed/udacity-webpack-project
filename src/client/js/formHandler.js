@@ -1,19 +1,21 @@
 import { json } from "body-parser";
 
 function handleSubmit(event) {
+  console.log("hello");
   event.preventDefault();
 
   // check what text was put into the form field
   let formText = document.getElementById("name").value;
 
-  Client.checkForName(formText);
-
-  console.log("::: Form Submitted :::");
-  getAnalysis(formText).then(function (data) {
-    document.getElementById("results").innerHTML = data.text;
-    document.getElementById("name").value = "";
-    return;
-  });
+  let isValid = Client.checkForName(formText);
+  if (isValid) {
+    console.log("::: Form Submitted :::");
+    getAnalysis(formText).then(function (data) {
+      document.getElementById("results").innerHTML = data.text;
+    });
+  }
+  document.getElementById("name").value = "";
+  return;
 }
 
 function getAnalysis(formText) {

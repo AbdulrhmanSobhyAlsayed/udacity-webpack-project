@@ -3,10 +3,13 @@ function checkForName(inputText) {
 
   if (!inputText) {
     alert("please enter value!!");
+    return false;
   }
   if (!isEnglish(inputText)) {
     alert("the text must be english !!");
+    return false;
   }
+  return true;
 }
 
 function isEnglish(input) {
